@@ -24,8 +24,8 @@ cache:
   directories:
   - "~/.m2/repository"
 after_success:
-- "./cd/before-deploy.sh"
-- "./cd/deploy.sh"
+- ./cd/before-deploy.sh
+- ./cd/deploy.sh
 after_failure:
 - cat com.github.lafa.logfast/target/surefire-reports/*.txt
 - cat com.github.lafa.logfast/core/target/surefire-reports/*.txt
