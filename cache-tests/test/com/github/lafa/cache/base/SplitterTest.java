@@ -18,14 +18,13 @@ package com.github.lafa.cache.base;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import com.github.lafa.cache.collect.ImmutableMap;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Platform;
 import com.google.common.base.Splitter;
 import com.google.common.testing.NullPointerTester;
-
-import cocom.github.lafa.cache.collect.ImmutableMap;
 
 import java.util.Iterator;
 import java.util.List;

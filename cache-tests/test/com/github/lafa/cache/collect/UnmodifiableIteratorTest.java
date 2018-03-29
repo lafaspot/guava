@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cocom.github.lafa.cache.collect;
+package com.github.lafa.cache.collect;
 
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.collect.UnmodifiableIterator;

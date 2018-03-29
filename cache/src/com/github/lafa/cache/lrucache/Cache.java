@@ -17,12 +17,9 @@ package com.github.lafa.cache.lrucache;
 import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ExecutionException;
 
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
-import com.github.lafa.cache.util.concurrent.ExecutionError;
-import com.github.lafa.cache.util.concurrent.UncheckedExecutionException;
 import com.google.errorprone.annotations.CompatibleWith;
 
 /**
@@ -47,53 +44,6 @@ public interface Cache<K, V> {
   @NullableDecl
   V getIfPresent(@CompatibleWith("K") Object key);
 
-  /**
-   * Returns the value associated with {@code key} in this cache, obtaining that value from {@code
-   * loader} if necessary. The method improves upon the conventional "if cached, return; otherwise
-   * create, cache and return" pattern. For further improvements, use {@link LoadingCache} and its
-   * {@link LoadingCache#get(Object) get(K)} method instead of this one.
-   *
-   * <p>Among the improvements that this method and {@code LoadingCache.get(K)} both provide are:
-   *
-   * <ul>
-   *   <li>{@linkplain LoadingCache#get(Object) awaiting the result of a pending load} rather than
-   *       starting a redundant one
-   *   <li>eliminating the error-prone caching boilerplate
-   *   <li>tracking load {@linkplain #stats statistics}
-   * </ul>
-   *
-   * <p>Among the further improvements that {@code LoadingCache} can provide but this method cannot:
-   *
-   * <ul>
-   *   <li>consolidation of the loader logic to {@linkplain CacheBuilder#build(CacheLoader) a single
-   *       authoritative location}
-   *   <li>{@linkplain LoadingCache#refresh refreshing of entries}, including {@linkplain
-   *       CacheBuilder#refreshAfterWrite automated refreshing}
-   *   <li>{@linkplain LoadingCache#getAll bulk loading requests}, including {@linkplain
-   *       CacheLoader#loadAll bulk loading implementations}
-   * </ul>
-   *
-   * <p><b>Warning:</b> For any given key, every {@code loader} used with it should compute the same
-   * value. Otherwise, a call that passes one {@code loader} may return the result of another call
-   * with a differently behaving {@code loader}. For example, a call that requests a short timeout
-   * for an RPC may wait for a similar call that requests a long timeout, or a call by an
-   * unprivileged user may return a resource accessible only to a privileged user making a similar
-   * call. To prevent this problem, create a key object that includes all values that affect the
-   * result of the query. Or use {@code LoadingCache.get(K)}, which lacks the ability to refer to
-   * state other than that in the key.
-   *
-   * <p><b>Warning:</b> as with {@link CacheLoader#load}, {@code loader} <b>must not</b> return
-   * {@code null}; it may either return a non-null value or throw an exception.
-   *
-   * <p>No observable state associated with this cache is modified until loading completes.
-   *
-   * @throws ExecutionException if a checked exception was thrown while loading the value
-   * @throws UncheckedExecutionException if an unchecked exception was thrown while loading the
-   *     value
-   * @throws ExecutionError if an error was thrown while loading the value
-   * @since 11.0
-   */
-  V get(K key, Callable<? extends V> loader) throws ExecutionException;
 
   /**
    * Returns a map of the values associated with {@code keys} in this cache. The returned map will

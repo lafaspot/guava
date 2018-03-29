@@ -21,6 +21,8 @@ import static com.github.lafa.cache.lrucache.TestingCacheLoaders.identityLoader;
 import static com.google.common.cache.CacheBuilder.EMPTY_STATS;
 import static com.google.common.truth.Truth.assertThat;
 
+import com.github.lafa.cache.collect.ImmutableMap;
+import com.github.lafa.cache.collect.ImmutableSet;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.CacheStats;
@@ -28,9 +30,6 @@ import com.google.common.cache.LoadingCache;
 import com.google.common.cache.LocalCache.LocalLoadingCache;
 import com.google.common.cache.LocalCache.Segment;
 import com.google.common.testing.NullPointerTester;
-
-import cocom.github.lafa.cache.collect.ImmutableMap;
-import cocom.github.lafa.cache.collect.ImmutableSet;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.Map;

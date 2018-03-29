@@ -20,10 +20,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.github.lafa.cache.collect.ImmutableList;
+import com.github.lafa.cache.collect.ImmutableMap;
 import com.google.common.cache.LoadingCache;
-
-import cocom.github.lafa.cache.collect.ImmutableList;
-import cocom.github.lafa.cache.collect.ImmutableMap;
 
 import java.util.concurrent.ExecutionException;
 import junit.framework.TestCase;

@@ -24,6 +24,11 @@ import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertSame;
 import static junit.framework.Assert.assertTrue;
 
+import com.github.lafa.cache.collect.ImmutableList;
+import com.github.lafa.cache.collect.ImmutableMap;
+import com.github.lafa.cache.collect.ImmutableSet;
+import com.github.lafa.cache.collect.Maps;
+import com.github.lafa.cache.collect.Sets;
 import com.google.common.base.Preconditions;
 import com.google.common.cache.Cache;
 import com.google.common.cache.LoadingCache;
@@ -34,12 +39,6 @@ import com.google.common.cache.LocalCache.Segment;
 import com.google.common.cache.LocalCache.ValueReference;
 import com.google.common.testing.EqualsTester;
 import com.google.common.testing.FakeTicker;
-
-import cocom.github.lafa.cache.collect.ImmutableList;
-import cocom.github.lafa.cache.collect.ImmutableMap;
-import cocom.github.lafa.cache.collect.ImmutableSet;
-import cocom.github.lafa.cache.collect.Maps;
-import cocom.github.lafa.cache.collect.Sets;
 
 import java.lang.ref.Reference;
 import java.util.Collection;

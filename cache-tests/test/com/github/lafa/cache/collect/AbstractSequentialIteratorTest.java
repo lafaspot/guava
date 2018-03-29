@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cocom.github.lafa.cache.collect;
+package com.github.lafa.cache.collect;
 
 import static com.google.common.collect.testing.IteratorFeature.UNMODIFIABLE;
 import static com.google.common.truth.Truth.assertThat;

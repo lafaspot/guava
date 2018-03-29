@@ -16,6 +16,8 @@
 
 package com.github.lafa.cache.base;
 
+import com.github.lafa.cache.collect.ImmutableMap;
+import com.github.lafa.cache.collect.Maps;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.Function;
@@ -28,9 +30,6 @@ import com.google.common.testing.ClassSanityTester;
 import com.google.common.testing.EqualsTester;
 import com.google.common.testing.NullPointerTester;
 import com.google.common.testing.SerializableTester;
-
-import cocom.github.lafa.cache.collect.ImmutableMap;
-import cocom.github.lafa.cache.collect.Maps;
 
 import java.io.Serializable;
 import java.util.Map;

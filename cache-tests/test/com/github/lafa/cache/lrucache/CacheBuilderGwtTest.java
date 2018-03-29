@@ -16,6 +16,9 @@
 
 package com.github.lafa.cache.lrucache;
 
+import com.github.lafa.cache.collect.ImmutableList;
+import com.github.lafa.cache.collect.ImmutableMap;
+import com.github.lafa.cache.collect.ImmutableSet;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
@@ -24,10 +27,6 @@ import com.google.common.cache.LoadingCache;
 import com.google.common.cache.RemovalListener;
 import com.google.common.cache.RemovalNotification;
 import com.google.common.testing.FakeTicker;
-
-import cocom.github.lafa.cache.collect.ImmutableList;
-import cocom.github.lafa.cache.collect.ImmutableMap;
-import cocom.github.lafa.cache.collect.ImmutableSet;
 
 import java.util.HashSet;
 import java.util.Iterator;

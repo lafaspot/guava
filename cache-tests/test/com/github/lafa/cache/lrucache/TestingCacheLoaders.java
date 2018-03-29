@@ -16,13 +16,12 @@ package com.github.lafa.cache.lrucache;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import com.github.lafa.cache.collect.Maps;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.cache.CacheLoader;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-
-import cocom.github.lafa.cache.collect.Maps;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;

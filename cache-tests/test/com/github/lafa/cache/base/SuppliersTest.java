@@ -18,6 +18,7 @@ package com.github.lafa.cache.base;
 
 import static com.google.common.testing.SerializableTester.reserialize;
 
+import com.github.lafa.cache.collect.Lists;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.Function;
@@ -26,8 +27,6 @@ import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.common.testing.ClassSanityTester;
 import com.google.common.testing.EqualsTester;
-
-import cocom.github.lafa.cache.collect.Lists;
 
 import java.io.Serializable;
 import java.util.ArrayList;
