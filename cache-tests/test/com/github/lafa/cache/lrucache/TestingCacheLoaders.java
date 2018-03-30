@@ -14,25 +14,25 @@
 
 package com.github.lafa.cache.lrucache;
 
-import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.github.lafa.cache.collect.Maps;
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
+import static com.github.lafa.cache.base.Preconditions.checkNotNull;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
+
 import com.google.common.cache.CacheLoader;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 /**
  * Utility {@link CacheLoader} implementations intended for use in testing.
  *
  * @author mike nonemacher
  */
-@GwtCompatible(emulated = true)
 class TestingCacheLoaders {
 
   /**
@@ -49,7 +49,7 @@ class TestingCacheLoaders {
 
       @Override
       public Map<K, V> loadAll(Iterable<? extends K> keys) throws Exception {
-        Map<K, V> result = Maps.newHashMap(); // allow nulls
+        Map<K, V> result = new HashMap<K, V>(); // allow nulls
         for (K key : keys) {
           result.put(key, load(key));
         }
@@ -142,7 +142,7 @@ class TestingCacheLoaders {
       return key;
     }
 
-    @GwtIncompatible // reload
+    // reload
     @Override
     public ListenableFuture<Integer> reload(Integer key, Integer oldValue) {
       countReload.incrementAndGet();

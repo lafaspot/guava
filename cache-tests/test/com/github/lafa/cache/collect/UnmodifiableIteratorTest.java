@@ -16,11 +16,9 @@
 
 package com.github.lafa.cache.collect;
 
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.collect.UnmodifiableIterator;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 import junit.framework.TestCase;
 
 /**
@@ -28,7 +26,6 @@ import junit.framework.TestCase;
  *
  * @author Jared Levy
  */
-@GwtCompatible
 public class UnmodifiableIteratorTest extends TestCase {
 
   public void testRemove() {

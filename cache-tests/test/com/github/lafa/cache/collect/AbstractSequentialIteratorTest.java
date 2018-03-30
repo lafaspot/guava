@@ -16,25 +16,25 @@
 
 package com.github.lafa.cache.collect;
 
-import static com.google.common.collect.testing.IteratorFeature.UNMODIFIABLE;
+import static com.github.lafa.cache.collect.testing.IteratorFeature.UNMODIFIABLE;
 import static com.google.common.truth.Truth.assertThat;
 
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.collect.AbstractSequentialIterator;
-import com.google.common.collect.testing.IteratorTester;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import com.github.lafa.cache.collect.testing.IteratorTester;
+import com.google.common.collect.AbstractSequentialIterator;
+
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
 /** Tests for {@link AbstractSequentialIterator}. */
-@GwtCompatible(emulated = true)
 public class AbstractSequentialIteratorTest extends TestCase {
-  @GwtIncompatible // Too slow
+  // Too slow
   public void testDoublerExhaustive() {
     new IteratorTester<Integer>(
-        3, UNMODIFIABLE, ImmutableList.of(1, 2), IteratorTester.KnownOrder.KNOWN_ORDER) {
+        3, UNMODIFIABLE, Arrays.asList(1, 2), IteratorTester.KnownOrder.KNOWN_ORDER) {
       @Override
       protected Iterator<Integer> newTargetIterator() {
         return newDoubler(1, 2);

@@ -16,10 +16,8 @@
 
 package com.github.lafa.cache.base;
 
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.Objects;
 import com.google.common.testing.NullPointerTester;
+
 import junit.framework.TestCase;
 
 /**
@@ -27,41 +25,40 @@ import junit.framework.TestCase;
  *
  * @author Laurence Gonsalves
  */
-@GwtCompatible(emulated = true)
 public class ObjectsTest extends TestCase {
 
-  public void testEqual() throws Exception {
-    assertTrue(Objects.equal(1, 1));
-    assertTrue(Objects.equal(null, null));
+	public void testEqual() throws Exception {
+		assertTrue(Objects.equal(1, 1));
+		assertTrue(Objects.equal(null, null));
 
-    // test distinct string objects
-    String s1 = "foobar";
-    String s2 = new String(s1);
-    assertTrue(Objects.equal(s1, s2));
+		// test distinct string objects
+		String s1 = "foobar";
+		String s2 = new String(s1);
+		assertTrue(Objects.equal(s1, s2));
 
-    assertFalse(Objects.equal(s1, null));
-    assertFalse(Objects.equal(null, s1));
-    assertFalse(Objects.equal("foo", "bar"));
-    assertFalse(Objects.equal("1", 1));
-  }
+		assertFalse(Objects.equal(s1, null));
+		assertFalse(Objects.equal(null, s1));
+		assertFalse(Objects.equal("foo", "bar"));
+		assertFalse(Objects.equal("1", 1));
+	}
 
-  public void testHashCode() throws Exception {
-    int h1 = Objects.hashCode(1, "two", 3.0);
-    int h2 = Objects.hashCode(new Integer(1), new String("two"), new Double(3.0));
-    // repeatable
-    assertEquals(h1, h2);
+	public void testHashCode() throws Exception {
+		int h1 = Objects.hashCode(1, "two", 3.0);
+		int h2 = Objects.hashCode(new Integer(1), new String("two"), new Double(3.0));
+		// repeatable
+		assertEquals(h1, h2);
 
-    // These don't strictly need to be true, but they're nice properties.
-    assertTrue(Objects.hashCode(1, 2, null) != Objects.hashCode(1, 2));
-    assertTrue(Objects.hashCode(1, 2, null) != Objects.hashCode(1, null, 2));
-    assertTrue(Objects.hashCode(1, null, 2) != Objects.hashCode(1, 2));
-    assertTrue(Objects.hashCode(1, 2, 3) != Objects.hashCode(3, 2, 1));
-    assertTrue(Objects.hashCode(1, 2, 3) != Objects.hashCode(2, 3, 1));
-  }
+		// These don't strictly need to be true, but they're nice properties.
+		assertTrue(Objects.hashCode(1, 2, null) != Objects.hashCode(1, 2));
+		assertTrue(Objects.hashCode(1, 2, null) != Objects.hashCode(1, null, 2));
+		assertTrue(Objects.hashCode(1, null, 2) != Objects.hashCode(1, 2));
+		assertTrue(Objects.hashCode(1, 2, 3) != Objects.hashCode(3, 2, 1));
+		assertTrue(Objects.hashCode(1, 2, 3) != Objects.hashCode(2, 3, 1));
+	}
 
-  @GwtIncompatible // NullPointerTester
-  public void testNullPointers() {
-    NullPointerTester tester = new NullPointerTester();
-    tester.testAllPublicStaticMethods(Objects.class);
-  }
+	// NullPointerTester
+	public void testNullPointers() {
+		NullPointerTester tester = new NullPointerTester();
+		tester.testAllPublicStaticMethods(Objects.class);
+	}
 }
