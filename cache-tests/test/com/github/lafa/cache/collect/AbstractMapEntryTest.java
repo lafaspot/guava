@@ -16,9 +16,6 @@
 
 package com.github.lafa.cache.collect;
 
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.collect.AbstractMapEntry;
-
 import java.util.Collections;
 import java.util.Map.Entry;
 import junit.framework.TestCase;
@@ -28,7 +25,7 @@ import junit.framework.TestCase;
  *
  * @author Mike Bostock
  */
-@GwtCompatible
+
 public class AbstractMapEntryTest extends TestCase {
   private static final String NK = null;
   private static final Integer NV = null;

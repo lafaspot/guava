@@ -15,13 +15,9 @@
  */
 
 package com.github.lafa.cache.base;
-
 import static com.google.common.base.Preconditions.checkState;
 import static com.google.common.truth.Truth.assertThat;
 
-import com.github.lafa.cache.collect.ImmutableList;
-import com.github.lafa.cache.collect.ImmutableSet;
-import com.github.lafa.cache.collect.Lists;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.Preconditions;
@@ -42,7 +38,6 @@ import junit.framework.TestCase;
  * @author Kevin Bourrillion
  * @author Jared Levy
  */
-@GwtCompatible(emulated = true)
 public class PreconditionsTest extends TestCase {
   public void testCheckArgument_simple_success() {
     Preconditions.checkArgument(true);

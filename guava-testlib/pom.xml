@@ -3,9 +3,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.google.guava</groupId>
-    <artifactId>guava-parent</artifactId>
-    <version>24.1-jre</version>
+    <groupId>com.github.lafa.cache</groupId>
+    <artifactId>cache-parent</artifactId>
+    <version>1.0</version>
   </parent>
   <artifactId>guava-testlib</artifactId>
   <name>Guava Testing Library</name>
@@ -29,11 +29,6 @@
     <dependency>
       <groupId>com.google.j2objc</groupId>
       <artifactId>j2objc-annotations</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>guava</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>

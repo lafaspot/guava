@@ -14,8 +14,6 @@
 
 package com.github.lafa.cache.lrucache;
 
-import com.google.common.cache.Weigher;
-
 /**
  * Utility {@link Weigher} implementations intended for use in testing.
  *

@@ -16,9 +16,7 @@
 
 package com.github.lafa.cache.base;
 
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.AbstractIterator;
+import com.github.lafa.cache.base.AbstractIterator;
 import com.google.common.testing.GcFinalization;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -30,7 +28,6 @@ import junit.framework.TestCase;
  *
  * @author Kevin Bourrillion
  */
-@GwtCompatible(emulated = true)
 public class AbstractIteratorTest extends TestCase {
 
   public void testDefaultBehaviorOfNextAndHasNext() {
@@ -172,7 +169,7 @@ public class AbstractIteratorTest extends TestCase {
     }
   }
 
-  @GwtIncompatible // weak references
+  // weak references
   public void testFreesNextReference() {
     Iterator<Object> itr =
         new AbstractIterator<Object>() {

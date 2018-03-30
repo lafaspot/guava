@@ -20,9 +20,8 @@ import com.github.lafa.cache.collect.Lists;
 import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
 import com.google.caliper.Param;
-import com.google.common.base.Ascii;
 import com.google.common.primitives.Chars;
-
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -55,7 +54,7 @@ public class AsciiBenchmark {
     int nonAlpha = size / nonAlphaRatio;
     int alpha = size - nonAlpha;
 
-    List<Character> chars = Lists.newArrayListWithCapacity(size);
+    List<Character> chars = new ArrayList<>(size);
     for (int i = 0; i < alpha; i++) {
       chars.add(randomAlpha());
     }
@@ -171,4 +170,5 @@ public class AsciiBenchmark {
     }
     return String.valueOf(newChars);
   }
+  
 }

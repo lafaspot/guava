@@ -14,8 +14,6 @@
 
 package com.github.lafa.cache.base;
 
-import com.google.common.base.CharMatcher;
-
 /**
  * Common benchmarking utilities.
  *

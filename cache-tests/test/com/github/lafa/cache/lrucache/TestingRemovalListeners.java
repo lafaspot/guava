@@ -14,11 +14,6 @@
 
 package com.github.lafa.cache.lrucache;
 
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.cache.RemovalListener;
-import com.google.common.cache.RemovalNotification;
-
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -27,7 +22,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author mike nonemacher
  */
-@GwtCompatible(emulated = true)
 class TestingRemovalListeners {
 
   /** Returns a new no-op {@code RemovalListener}. */
@@ -36,7 +30,7 @@ class TestingRemovalListeners {
   }
 
   /** Type-inferring factory method for creating a {@link QueuingRemovalListener}. */
-  @GwtIncompatible // ConcurrentLinkedQueue
+  // ConcurrentLinkedQueue
   static <K, V> QueuingRemovalListener<K, V> queuingRemovalListener() {
     return new QueuingRemovalListener<>();
   }
@@ -47,7 +41,7 @@ class TestingRemovalListeners {
   }
 
   /** {@link RemovalListener} that adds all {@link RemovalNotification} objects to a queue. */
-  @GwtIncompatible // ConcurrentLinkedQueue
+  // ConcurrentLinkedQueue
   static class QueuingRemovalListener<K, V> extends ConcurrentLinkedQueue<RemovalNotification<K, V>>
       implements RemovalListener<K, V> {
 
