@@ -11,7 +11,7 @@
   </parent>
   <groupId>com.github.lafa.cache</groupId>
   <artifactId>cache-parent</artifactId>
-  <version>1.0</version>
+  <version>1.0.0</version>
   <packaging>pom</packaging>
   <name>Cache Maven Parent</name>
   <url>https://github.com/lafaspot/ConcurrentHashMap</url>
@@ -78,7 +78,33 @@
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>${maven-javadoc-plugin.version}</version>
-      </plugin>
+      </plugin>         
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.6</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+     
     </plugins>
     <pluginManagement>
       <plugins>
@@ -190,8 +216,9 @@
             <argLine>-Xmx1536M -Duser.language=hi -Duser.country=IN</argLine>
           </configuration>
         </plugin>
-      </plugins>
+        </plugins>
     </pluginManagement>
+
   </build>
   
       <distributionManagement>
