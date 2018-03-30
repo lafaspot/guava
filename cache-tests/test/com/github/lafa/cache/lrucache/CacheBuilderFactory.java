@@ -14,6 +14,9 @@
 
 package com.github.lafa.cache.lrucache;
 
+import com.github.lafa.cache.collect.Iterables;
+import com.github.lafa.cache.collect.Lists;
+import com.github.lafa.cache.collect.Sets;
 import com.google.common.base.Function;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
@@ -21,10 +24,6 @@ import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.LocalCache.Strength;
-
-import cocom.github.lafa.cache.collect.Iterables;
-import cocom.github.lafa.cache.collect.Lists;
-import cocom.github.lafa.cache.collect.Sets;
 
 import java.util.List;
 import java.util.Set;

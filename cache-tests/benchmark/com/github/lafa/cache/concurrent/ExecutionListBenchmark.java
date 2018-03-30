@@ -18,6 +18,7 @@ package com.github.lafa.cache.concurrent;
 
 import static com.google.common.util.concurrent.MoreExecutors.directExecutor;
 
+import com.github.lafa.cache.collect.Lists;
 import com.github.lafa.cache.util.concurrent.AbstractFutureBenchmarks.OldAbstractFuture;
 import com.google.caliper.AfterExperiment;
 import com.google.caliper.BeforeExperiment;
@@ -29,8 +30,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.util.concurrent.AbstractFuture;
 import com.google.common.util.concurrent.ExecutionList;
 import com.google.errorprone.annotations.concurrent.GuardedBy;
-
-import cocom.github.lafa.cache.collect.Lists;
 
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;

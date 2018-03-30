@@ -16,13 +16,12 @@
 
 package com.github.lafa.cache.lrucache;
 
+import com.github.lafa.cache.collect.ImmutableList;
+import com.github.lafa.cache.collect.ImmutableMap;
+import com.github.lafa.cache.collect.Lists;
 import com.google.common.cache.CacheLoader;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-
-import cocom.github.lafa.cache.collect.ImmutableList;
-import cocom.github.lafa.cache.collect.ImmutableMap;
-import cocom.github.lafa.cache.collect.Lists;
 
 import java.util.LinkedList;
 import java.util.Map;

@@ -16,12 +16,11 @@
 
 package com.github.lafa.cache.lrucache;
 
+import com.github.lafa.cache.collect.MapMaker;
 import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-
-import cocom.github.lafa.cache.collect.MapMaker;
 
 import java.util.Map;
 

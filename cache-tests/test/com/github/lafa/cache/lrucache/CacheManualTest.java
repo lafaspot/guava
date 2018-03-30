@@ -16,12 +16,12 @@ package com.github.lafa.cache.lrucache;
 
 import static java.util.Arrays.asList;
 
+import com.github.lafa.cache.collect.ImmutableList;
+import com.github.lafa.cache.collect.ImmutableMap;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheStats;
 
-import cocom.github.lafa.cache.collect.ImmutableList;
-import cocom.github.lafa.cache.collect.ImmutableMap;
 import junit.framework.TestCase;
 
 /** @author Charles Fry */

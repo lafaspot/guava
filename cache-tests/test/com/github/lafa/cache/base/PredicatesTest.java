@@ -16,9 +16,10 @@
 
 package com.github.lafa.cache.base;
 
-import static cocom.github.lafa.cache.collect.Lists.newArrayList;
+import static com.github.lafa.cache.collect.Lists.newArrayList;
 import static com.google.common.base.CharMatcher.whitespace;
 
+import com.github.lafa.cache.collect.ImmutableSet;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.Function;
@@ -30,8 +31,6 @@ import com.google.common.testing.ClassSanityTester;
 import com.google.common.testing.EqualsTester;
 import com.google.common.testing.NullPointerTester;
 import com.google.common.testing.SerializableTester;
-
-import cocom.github.lafa.cache.collect.ImmutableSet;
 
 import java.io.Serializable;
 import java.util.ArrayList;

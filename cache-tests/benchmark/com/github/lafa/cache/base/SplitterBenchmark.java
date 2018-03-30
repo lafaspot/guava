@@ -16,13 +16,12 @@
 
 package com.github.lafa.cache.base;
 
+import com.github.lafa.cache.collect.Iterables;
 import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
 import com.google.caliper.Param;
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
-
-import cocom.github.lafa.cache.collect.Iterables;
 
 /**
  * Microbenchmark for {@link Splitter#on} with char vs String with length == 1.

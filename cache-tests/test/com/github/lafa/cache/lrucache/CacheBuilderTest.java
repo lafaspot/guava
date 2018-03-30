@@ -26,6 +26,8 @@ import static com.google.common.truth.Truth.assertThat;
 import static java.util.concurrent.TimeUnit.NANOSECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+import com.github.lafa.cache.collect.Maps;
+import com.github.lafa.cache.collect.Sets;
 import com.github.lafa.cache.lrucache.TestingRemovalListeners.CountingRemovalListener;
 import com.github.lafa.cache.lrucache.TestingRemovalListeners.QueuingRemovalListener;
 import com.google.common.annotations.GwtCompatible;
@@ -39,9 +41,6 @@ import com.google.common.cache.LocalCache;
 import com.google.common.cache.RemovalListener;
 import com.google.common.cache.RemovalNotification;
 import com.google.common.testing.NullPointerTester;
-
-import cocom.github.lafa.cache.collect.Maps;
-import cocom.github.lafa.cache.collect.Sets;
 
 import java.util.Map;
 import java.util.Random;

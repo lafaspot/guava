@@ -16,17 +16,16 @@
 
 package com.github.lafa.cache.base;
 
+import com.github.lafa.cache.collect.ImmutableMap;
+import com.github.lafa.cache.collect.ImmutableMultimap;
+import com.github.lafa.cache.collect.ImmutableSet;
+import com.github.lafa.cache.collect.Lists;
+import com.github.lafa.cache.collect.Maps;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.Joiner;
 import com.google.common.base.Joiner.MapJoiner;
 import com.google.common.testing.NullPointerTester;
-
-import cocom.github.lafa.cache.collect.ImmutableMap;
-import cocom.github.lafa.cache.collect.ImmutableMultimap;
-import cocom.github.lafa.cache.collect.ImmutableSet;
-import cocom.github.lafa.cache.collect.Lists;
-import cocom.github.lafa.cache.collect.Maps;
 
 import java.io.IOException;
 import java.util.Arrays;

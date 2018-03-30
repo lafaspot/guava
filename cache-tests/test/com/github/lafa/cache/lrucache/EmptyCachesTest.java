@@ -20,16 +20,15 @@ import static java.util.Arrays.asList;
 import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+import com.github.lafa.cache.collect.ImmutableSet;
+import com.github.lafa.cache.collect.Iterables;
+import com.github.lafa.cache.collect.Maps;
 import com.github.lafa.cache.lrucache.CacheBuilderFactory.DurationSpec;
 import com.google.common.base.Function;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.LoadingCache;
 import com.google.common.cache.LocalCache.Strength;
 import com.google.common.testing.EqualsTester;
-
-import cocom.github.lafa.cache.collect.ImmutableSet;
-import cocom.github.lafa.cache.collect.Iterables;
-import cocom.github.lafa.cache.collect.Maps;
 
 import java.util.Collection;
 import java.util.Map.Entry;

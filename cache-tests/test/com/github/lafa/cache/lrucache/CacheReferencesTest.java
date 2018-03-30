@@ -14,19 +14,18 @@
 
 package com.github.lafa.cache.lrucache;
 
-import static cocom.github.lafa.cache.collect.Maps.immutableEntry;
+import static com.github.lafa.cache.collect.Maps.immutableEntry;
 import static com.google.common.cache.LocalCache.Strength.STRONG;
 import static com.google.common.truth.Truth.assertThat;
 
+import com.github.lafa.cache.collect.ImmutableSet;
+import com.github.lafa.cache.collect.Iterables;
 import com.github.lafa.cache.lrucache.TestingRemovalListeners.CountingRemovalListener;
 import com.google.common.base.Function;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.cache.LocalCache.Strength;
-
-import cocom.github.lafa.cache.collect.ImmutableSet;
-import cocom.github.lafa.cache.collect.Iterables;
 
 import java.lang.ref.WeakReference;
 import junit.framework.TestCase;

@@ -25,6 +25,7 @@ import static com.google.common.base.CharMatcher.isNot;
 import static com.google.common.base.CharMatcher.noneOf;
 import static com.google.common.base.CharMatcher.whitespace;
 
+import com.github.lafa.cache.collect.Sets;
 import com.google.common.annotations.GwtCompatible;
 import com.google.common.annotations.GwtIncompatible;
 import com.google.common.base.CharMatcher;
@@ -32,8 +33,6 @@ import com.google.common.base.Predicates;
 import com.google.common.base.SmallCharMatcher;
 import com.google.common.base.Strings;
 import com.google.common.testing.NullPointerTester;
-
-import cocom.github.lafa.cache.collect.Sets;
 
 import java.util.Arrays;
 import java.util.BitSet;

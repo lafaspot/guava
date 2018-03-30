@@ -16,15 +16,14 @@
 
 package com.github.lafa.cache.lrucache;
 
+import com.github.lafa.cache.collect.ImmutableList;
+import com.github.lafa.cache.collect.ImmutableMap;
+import com.github.lafa.cache.collect.Lists;
 import com.google.common.cache.AbstractCache;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheStats;
 import com.google.common.cache.AbstractCache.SimpleStatsCounter;
 import com.google.common.cache.AbstractCache.StatsCounter;
-
-import cocom.github.lafa.cache.collect.ImmutableList;
-import cocom.github.lafa.cache.collect.ImmutableMap;
-import cocom.github.lafa.cache.collect.Lists;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;

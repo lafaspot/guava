@@ -16,13 +16,12 @@
 
 package com.github.lafa.cache.base;
 
+import com.github.lafa.cache.collect.Lists;
 import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
 import com.google.caliper.Param;
 import com.google.common.base.Ascii;
 import com.google.common.primitives.Chars;
-
-import cocom.github.lafa.cache.collect.Lists;
 
 import java.util.Collections;
 import java.util.List;

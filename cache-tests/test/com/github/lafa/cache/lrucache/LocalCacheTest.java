@@ -16,8 +16,8 @@
 
 package com.github.lafa.cache.lrucache;
 
-import static cocom.github.lafa.cache.collect.Lists.newArrayList;
-import static cocom.github.lafa.cache.collect.Maps.immutableEntry;
+import static com.github.lafa.cache.collect.Lists.newArrayList;
+import static com.github.lafa.cache.collect.Maps.immutableEntry;
 import static com.github.lafa.cache.lrucache.TestingCacheLoaders.identityLoader;
 import static com.github.lafa.cache.lrucache.TestingRemovalListeners.countingRemovalListener;
 import static com.github.lafa.cache.lrucache.TestingRemovalListeners.queuingRemovalListener;
@@ -32,6 +32,11 @@ import static java.util.concurrent.TimeUnit.MINUTES;
 import static java.util.concurrent.TimeUnit.NANOSECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+import com.github.lafa.cache.collect.ImmutableList;
+import com.github.lafa.cache.collect.ImmutableMap;
+import com.github.lafa.cache.collect.ImmutableSet;
+import com.github.lafa.cache.collect.Lists;
+import com.github.lafa.cache.collect.Maps;
 import com.github.lafa.cache.lrucache.TestingCacheLoaders.CountingLoader;
 import com.github.lafa.cache.lrucache.TestingRemovalListeners.CountingRemovalListener;
 import com.github.lafa.cache.lrucache.TestingRemovalListeners.QueuingRemovalListener;
@@ -61,12 +66,6 @@ import com.google.common.testing.FakeTicker;
 import com.google.common.testing.NullPointerTester;
 import com.google.common.testing.SerializableTester;
 import com.google.common.testing.TestLogHandler;
-
-import cocom.github.lafa.cache.collect.ImmutableList;
-import cocom.github.lafa.cache.collect.ImmutableMap;
-import cocom.github.lafa.cache.collect.ImmutableSet;
-import cocom.github.lafa.cache.collect.Lists;
-import cocom.github.lafa.cache.collect.Maps;
 
 import java.io.Serializable;
 import java.lang.ref.Reference;

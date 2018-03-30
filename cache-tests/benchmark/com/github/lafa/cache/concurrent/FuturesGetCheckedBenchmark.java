@@ -16,7 +16,7 @@
 
 package com.github.lafa.cache.concurrent;
 
-import static cocom.github.lafa.cache.collect.Lists.newArrayList;
+import static com.github.lafa.cache.collect.Lists.newArrayList;
 import static com.github.lafa.cache.util.concurrent.FuturesGetChecked.checkExceptionClassValidity;
 import static com.github.lafa.cache.util.concurrent.FuturesGetChecked.classValueValidator;
 import static com.github.lafa.cache.util.concurrent.FuturesGetChecked.getChecked;
@@ -26,13 +26,12 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.util.concurrent.Futures.immediateFailedFuture;
 import static com.google.common.util.concurrent.Futures.immediateFuture;
 
+import com.github.lafa.cache.collect.ImmutableSet;
 import com.github.lafa.cache.util.concurrent.FuturesGetChecked.GetCheckedTypeValidator;
 import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
 import com.google.caliper.Param;
 import com.google.common.util.concurrent.Futures;
-
-import cocom.github.lafa.cache.collect.ImmutableSet;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
