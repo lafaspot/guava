@@ -20,8 +20,8 @@ import com.github.lafa.cache.collect.testing.DerivedCollectionGenerators.Bound;
 import com.github.lafa.cache.collect.testing.DerivedCollectionGenerators.SortedSetSubsetTestSetGenerator;
 import com.github.lafa.cache.collect.testing.features.CollectionFeature;
 import com.github.lafa.cache.collect.testing.features.Feature;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.collect.testing.testers.SortedSetNavigationTester;
+import com.github.lafa.cache.collect.testing.testers.SortedSetNavigationTester;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -31,7 +31,7 @@ import junit.framework.TestSuite;
  * Creates, based on your criteria, a JUnit test suite that exhaustively tests a SortedSet
  * implementation.
  */
-@GwtIncompatible
+
 public class SortedSetTestSuiteBuilder<E> extends SetTestSuiteBuilder<E> {
   public static <E> SortedSetTestSuiteBuilder<E> using(TestSortedSetGenerator<E> generator) {
     SortedSetTestSuiteBuilder<E> builder = new SortedSetTestSuiteBuilder<E>();

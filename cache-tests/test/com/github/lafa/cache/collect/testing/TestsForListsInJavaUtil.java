@@ -16,18 +16,18 @@
 
 package com.github.lafa.cache.collect.testing;
 
-import static com.google.common.collect.testing.testers.CollectionSpliteratorTester.getSpliteratorNotImmutableCollectionAllowsAddMethod;
-import static com.google.common.collect.testing.testers.CollectionSpliteratorTester.getSpliteratorNotImmutableCollectionAllowsRemoveMethod;
-import static com.google.common.collect.testing.testers.ListListIteratorTester.getListIteratorFullyModifiableMethod;
-import static com.google.common.collect.testing.testers.ListSubListTester.getSubListOriginalListSetAffectsSubListLargeListMethod;
-import static com.google.common.collect.testing.testers.ListSubListTester.getSubListOriginalListSetAffectsSubListMethod;
-import static com.google.common.collect.testing.testers.ListSubListTester.getSubListSubListRemoveAffectsOriginalLargeListMethod;
+import static com.github.lafa.cache.collect.testing.testers.CollectionSpliteratorTester.getSpliteratorNotImmutableCollectionAllowsAddMethod;
+import static com.github.lafa.cache.collect.testing.testers.CollectionSpliteratorTester.getSpliteratorNotImmutableCollectionAllowsRemoveMethod;
+import static com.github.lafa.cache.collect.testing.testers.ListListIteratorTester.getListIteratorFullyModifiableMethod;
+import static com.github.lafa.cache.collect.testing.testers.ListSubListTester.getSubListOriginalListSetAffectsSubListLargeListMethod;
+import static com.github.lafa.cache.collect.testing.testers.ListSubListTester.getSubListOriginalListSetAffectsSubListMethod;
+import static com.github.lafa.cache.collect.testing.testers.ListSubListTester.getSubListSubListRemoveAffectsOriginalLargeListMethod;
 import static java.util.Arrays.asList;
 
 import com.github.lafa.cache.collect.testing.features.CollectionFeature;
 import com.github.lafa.cache.collect.testing.features.CollectionSize;
 import com.github.lafa.cache.collect.testing.features.ListFeature;
-import com.google.common.annotations.GwtIncompatible;
+
 
 import java.lang.reflect.Method;
 import java.util.AbstractList;
@@ -50,7 +50,7 @@ import junit.framework.TestSuite;
  *
  * @author Kevin Bourrillion
  */
-@GwtIncompatible
+
 public class TestsForListsInJavaUtil {
   public static Test suite() {
     return new TestsForListsInJavaUtil().allTests();

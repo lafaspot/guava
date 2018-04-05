@@ -19,7 +19,7 @@ package com.github.lafa.cache.collect.testing;
 import com.github.lafa.cache.collect.testing.features.CollectionSize;
 import com.github.lafa.cache.collect.testing.features.Feature;
 import com.github.lafa.cache.collect.testing.features.FeatureUtil;
-import com.google.common.annotations.GwtIncompatible;
+
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ import junit.framework.TestSuite;
  * @see FeatureSpecificTestSuiteBuilder
  * @author George van den Driessche
  */
-@GwtIncompatible
+
 public abstract class PerCollectionSizeTestSuiteBuilder<
         B extends PerCollectionSizeTestSuiteBuilder<B, G, T, E>,
         G extends TestContainerGenerator<T, E>,

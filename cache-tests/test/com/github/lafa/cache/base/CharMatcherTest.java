@@ -16,8 +16,6 @@
 
 package com.github.lafa.cache.base;
 
-
-;
 import static com.github.lafa.cache.base.CharMatcher.anyOf;
 import static com.github.lafa.cache.base.CharMatcher.breakingWhitespace;
 import static com.github.lafa.cache.base.CharMatcher.forPredicate;
@@ -27,22 +25,13 @@ import static com.github.lafa.cache.base.CharMatcher.isNot;
 import static com.github.lafa.cache.base.CharMatcher.noneOf;
 import static com.github.lafa.cache.base.CharMatcher.whitespace;
 
-import com.google.common.collect.Sets;
-import com.google.common.annotations.GwtCompatible;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.base.CharMatcher;
-import com.google.common.base.Predicates;
-import  com.github.lafa.cache.base.SmallCharMatcher;
-import com.google.common.base.Strings;
-import com.google.common.testing.NullPointerTester;
-
 import java.util.Arrays;
 import java.util.BitSet;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import com.google.common.testing.NullPointerTester;
+import com.github.lafa.cache.common.testing.NullPointerTester;
 
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
@@ -57,6 +46,10 @@ public class CharMatcherTest extends TestCase {
 	// NullPointerTester
 	public void testStaticNullPointers() throws Exception {
 		NullPointerTester tester = new NullPointerTester();
+		tester.setDefault(char.class, 'a');
+		tester.setDefault(Character.class, 'a');
+		tester.setDefault(int.class, 1);
+		tester.setDefault(Integer.class, 1);
 		tester.testAllPublicStaticMethods(CharMatcher.class);
 		tester.testAllPublicInstanceMethods(CharMatcher.any());
 		tester.testAllPublicInstanceMethods(CharMatcher.anyOf("abc"));
@@ -206,6 +199,10 @@ public class CharMatcherTest extends TestCase {
 	// NullPointerTester
 	private static void doTestNull(CharMatcher matcher) throws Exception {
 		NullPointerTester tester = new NullPointerTester();
+		tester.setDefault(char.class, 'a');
+		tester.setDefault(Character.class, 'a');
+		tester.setDefault(int.class, 1);
+		tester.setDefault(Integer.class, 1);
 		tester.testAllPublicInstanceMethods(matcher);
 	}
 

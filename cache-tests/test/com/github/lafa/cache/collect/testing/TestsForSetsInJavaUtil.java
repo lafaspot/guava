@@ -16,14 +16,14 @@
 
 package com.github.lafa.cache.collect.testing;
 
-import static com.google.common.collect.testing.testers.CollectionSpliteratorTester.getSpliteratorNotImmutableCollectionAllowsAddMethod;
-import static com.google.common.collect.testing.testers.CollectionSpliteratorTester.getSpliteratorNotImmutableCollectionAllowsRemoveMethod;
+import static com.github.lafa.cache.collect.testing.testers.CollectionSpliteratorTester.getSpliteratorNotImmutableCollectionAllowsAddMethod;
+import static com.github.lafa.cache.collect.testing.testers.CollectionSpliteratorTester.getSpliteratorNotImmutableCollectionAllowsRemoveMethod;
 import static java.util.Arrays.asList;
 
 import com.github.lafa.cache.collect.testing.features.CollectionFeature;
 import com.github.lafa.cache.collect.testing.features.CollectionSize;
 import com.github.lafa.cache.collect.testing.features.SetFeature;
-import com.google.common.annotations.GwtIncompatible;
+
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -50,7 +50,7 @@ import junit.framework.TestSuite;
  *
  * @author Kevin Bourrillion
  */
-@GwtIncompatible
+
 public class TestsForSetsInJavaUtil {
   public static Test suite() {
     return new TestsForSetsInJavaUtil().allTests();

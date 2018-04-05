@@ -16,80 +16,66 @@
 
 package com.github.lafa.cache.lrucache;
 
-import static com.google.common.truth.Truth.assertThat;
-
 import java.util.concurrent.TimeUnit;
 import java.util.function.IntConsumer;
 import java.util.stream.IntStream;
 
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
+import org.junit.Assert;
 
 import junit.framework.TestCase;
 
 /** Test Java8 map.compute in concurrent cache context. */
 public class LocalCacheMapComputeTest extends TestCase {
-  final int count = 10000;
-  final String delimiter = "-";
-  final String key = "key";
-  Cache<String, String> cache;
+	final int count = 10000;
+	final String delimiter = "-";
+	final String key = "key";
+	Cache<String, String> cache;
 
-  // helper
-  private static void doParallelCacheOp(int count, IntConsumer consumer) {
-    IntStream.range(0, count).parallel().forEach(consumer);
-  }
+	// helper
+	private static void doParallelCacheOp(int count, IntConsumer consumer) {
+		IntStream.range(0, count).parallel().forEach(consumer);
+	}
 
-  @Override
-  public void setUp() throws Exception {
-    super.setUp();
-    this.cache =
-        CacheBuilder.newBuilder()
-            .expireAfterAccess(500000, TimeUnit.MILLISECONDS)
-            .maximumSize(count)
-            .build();
-  }
+	@Override
+	public void setUp() throws Exception {
+		super.setUp();
+		this.cache = CacheBuilder.newBuilder().expireAfterAccess(500000, TimeUnit.MILLISECONDS).maximumSize(count)
+				.build();
+	}
 
-  public void testComputeIfAbsent() {
-    // simultaneous insertion for same key, expect 1 winner
-    doParallelCacheOp(
-        count,
-        n -> {
-          cache.asMap().computeIfAbsent(key, k -> "value" + n);
-        });
-    assertEquals(1, cache.size());
-  }
+	public void testComputeIfAbsent() {
+		// simultaneous insertion for same key, expect 1 winner
+		doParallelCacheOp(count, n -> {
+			cache.asMap().computeIfAbsent(key, k -> "value" + n);
+		});
+		assertEquals(1, cache.size());
+	}
 
-  public void testComputeIfPresent() {
-    cache.put(key, "1");
-    // simultaneous update for same key, expect count successful updates
-    doParallelCacheOp(
-        count,
-        n -> {
-          cache.asMap().computeIfPresent(key, (k, v) -> v + delimiter + n);
-        });
-    assertEquals(1, cache.size());
-    assertThat(cache.getIfPresent(key).split(delimiter)).hasLength(count + 1);
-  }
+	public void testComputeIfPresent() {
+		cache.put(key, "1");
+		// simultaneous update for same key, expect count successful updates
+		doParallelCacheOp(count, n -> {
+			cache.asMap().computeIfPresent(key, (k, v) -> v + delimiter + n);
+		});
+		assertEquals(1, cache.size());
+		Assert.assertEquals(cache.getIfPresent(key).split(delimiter).length, count + 1);
+	}
 
-  public void testUpdates() {
-    cache.put(key, "1");
-    // simultaneous update for same key, some null, some non-null
-    doParallelCacheOp(
-        count,
-        n -> {
-          cache.asMap().compute(key, (k, v) -> n % 2 == 0 ? v + delimiter + n : null);
-        });
-    assertTrue(1 >= cache.size());
-  }
+	public void testUpdates() {
+		cache.put(key, "1");
+		// simultaneous update for same key, some null, some non-null
+		doParallelCacheOp(count, n -> {
+			cache.asMap().compute(key, (k, v) -> n % 2 == 0 ? v + delimiter + n : null);
+		});
+		assertTrue(1 >= cache.size());
+	}
 
-  public void testCompute() {
-    cache.put(key, "1");
-    // simultaneous deletion
-    doParallelCacheOp(
-        count,
-        n -> {
-          cache.asMap().compute(key, (k, v) -> null);
-        });
-    assertEquals(0, cache.size());
-  }
+	public void testCompute() {
+		cache.put(key, "1");
+		// simultaneous deletion
+		doParallelCacheOp(count, n -> {
+			cache.asMap().compute(key, (k, v) -> null);
+		});
+		assertEquals(0, cache.size());
+	}
 }

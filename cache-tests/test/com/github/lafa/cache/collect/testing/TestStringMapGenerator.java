@@ -16,7 +16,7 @@
 
 package com.github.lafa.cache.collect.testing;
 
-import com.google.common.annotations.GwtCompatible;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;

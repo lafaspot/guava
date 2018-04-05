@@ -14,222 +14,195 @@
 
 package com.github.lafa.cache.lrucache;
 
-import com.github.lafa.cache.collect.Iterables;
-import com.github.lafa.cache.collect.Lists;
-import com.github.lafa.cache.collect.Sets;
-import com.google.common.base.Function;
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
-import com.google.common.base.Optional;
-import com.google.common.base.Preconditions;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.LocalCache.Strength;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
+import com.github.lafa.cache.base.Function;
+import com.github.lafa.cache.base.MoreObjects;
+import com.github.lafa.cache.base.Objects;
+import com.github.lafa.cache.base.Preconditions;
+import com.github.lafa.cache.lrucache.LocalCache.Strength;
+
 /**
- * Helper class for creating {@link CacheBuilder} instances with all combinations of several sets of
- * parameters.
+ * Helper class for creating {@link CacheBuilder} instances with all
+ * combinations of several sets of parameters.
  *
  * @author mike nonemacher
  */
 class CacheBuilderFactory {
-  // Default values contain only 'null', which means don't call the CacheBuilder method (just give
-  // the CacheBuilder default).
-  private Set<Integer> concurrencyLevels = Sets.newHashSet((Integer) null);
-  private Set<Integer> initialCapacities = Sets.newHashSet((Integer) null);
-  private Set<Integer> maximumSizes = Sets.newHashSet((Integer) null);
-  private Set<DurationSpec> expireAfterWrites = Sets.newHashSet((DurationSpec) null);
-  private Set<DurationSpec> expireAfterAccesses = Sets.newHashSet((DurationSpec) null);
-  private Set<DurationSpec> refreshes = Sets.newHashSet((DurationSpec) null);
-  private Set<Strength> keyStrengths = Sets.newHashSet((Strength) null);
-  private Set<Strength> valueStrengths = Sets.newHashSet((Strength) null);
+	// Default values contain only 'null', which means don't call the CacheBuilder
+	// method (just give
+	// the CacheBuilder default).
+	private Set<Integer> concurrencyLevels = new HashSet<>();
+	private Set<Integer> initialCapacities = new HashSet<>();
+	private Set<Integer> maximumSizes = new HashSet<>();
+	private Set<DurationSpec> expireAfterWrites = new HashSet<>();
+	private Set<DurationSpec> expireAfterAccesses = new HashSet<>();
+	private Set<DurationSpec> refreshes = new HashSet<>();
+	private Set<Strength> keyStrengths = new HashSet<>();
+	private Set<Strength> valueStrengths = new HashSet<>();
 
-  CacheBuilderFactory withConcurrencyLevels(Set<Integer> concurrencyLevels) {
-    this.concurrencyLevels = Sets.newLinkedHashSet(concurrencyLevels);
-    return this;
-  }
+	CacheBuilderFactory withConcurrencyLevels(Set<Integer> concurrencyLevels) {
+		this.concurrencyLevels = new LinkedHashSet<>(concurrencyLevels);
+		return this;
+	}
 
-  CacheBuilderFactory withInitialCapacities(Set<Integer> initialCapacities) {
-    this.initialCapacities = Sets.newLinkedHashSet(initialCapacities);
-    return this;
-  }
+	CacheBuilderFactory withInitialCapacities(Set<Integer> initialCapacities) {
+		this.initialCapacities = new LinkedHashSet<>(initialCapacities);
+		return this;
+	}
 
-  CacheBuilderFactory withMaximumSizes(Set<Integer> maximumSizes) {
-    this.maximumSizes = Sets.newLinkedHashSet(maximumSizes);
-    return this;
-  }
+	CacheBuilderFactory withMaximumSizes(Set<Integer> maximumSizes) {
+		this.maximumSizes = new LinkedHashSet<>(maximumSizes);
+		return this;
+	}
 
-  CacheBuilderFactory withExpireAfterWrites(Set<DurationSpec> durations) {
-    this.expireAfterWrites = Sets.newLinkedHashSet(durations);
-    return this;
-  }
+	CacheBuilderFactory withExpireAfterWrites(Set<DurationSpec> durations) {
+		this.expireAfterWrites = new LinkedHashSet<>(durations);
+		return this;
+	}
 
-  CacheBuilderFactory withExpireAfterAccesses(Set<DurationSpec> durations) {
-    this.expireAfterAccesses = Sets.newLinkedHashSet(durations);
-    return this;
-  }
+	CacheBuilderFactory withExpireAfterAccesses(Set<DurationSpec> durations) {
+		this.expireAfterAccesses = new LinkedHashSet<>(durations);
+		return this;
+	}
 
-  CacheBuilderFactory withRefreshes(Set<DurationSpec> durations) {
-    this.refreshes = Sets.newLinkedHashSet(durations);
-    return this;
-  }
+	CacheBuilderFactory withRefreshes(Set<DurationSpec> durations) {
+		this.refreshes = new LinkedHashSet<>(durations);
+		return this;
+	}
 
-  CacheBuilderFactory withKeyStrengths(Set<Strength> keyStrengths) {
-    this.keyStrengths = Sets.newLinkedHashSet(keyStrengths);
-    Preconditions.checkArgument(!this.keyStrengths.contains(Strength.SOFT));
-    return this;
-  }
+	CacheBuilderFactory withKeyStrengths(Set<Strength> keyStrengths) {
+		this.keyStrengths = new LinkedHashSet<>(keyStrengths);
+		Preconditions.checkArgument(!this.keyStrengths.contains(Strength.SOFT));
+		return this;
+	}
 
-  CacheBuilderFactory withValueStrengths(Set<Strength> valueStrengths) {
-    this.valueStrengths = Sets.newLinkedHashSet(valueStrengths);
-    return this;
-  }
+	CacheBuilderFactory withValueStrengths(Set<Strength> valueStrengths) {
+		this.valueStrengths = new LinkedHashSet<>(valueStrengths);
+		return this;
+	}
 
-  Iterable<CacheBuilder<Object, Object>> buildAllPermutations() {
-    @SuppressWarnings("unchecked")
-    Iterable<List<Object>> combinations =
-        buildCartesianProduct(
-            concurrencyLevels,
-            initialCapacities,
-            maximumSizes,
-            expireAfterWrites,
-            expireAfterAccesses,
-            refreshes,
-            keyStrengths,
-            valueStrengths);
-    return Iterables.transform(
-        combinations,
-        new Function<List<Object>, CacheBuilder<Object, Object>>() {
-          @Override
-          public CacheBuilder<Object, Object> apply(List<Object> combination) {
-            return createCacheBuilder(
-                (Integer) combination.get(0),
-                (Integer) combination.get(1),
-                (Integer) combination.get(2),
-                (DurationSpec) combination.get(3),
-                (DurationSpec) combination.get(4),
-                (DurationSpec) combination.get(5),
-                (Strength) combination.get(6),
-                (Strength) combination.get(7));
-          }
-        });
-  }
+	Iterable<CacheBuilder<Object, Object>> buildAllPermutations() {
+		final Set<?> sets = new HashSet<>(Arrays.asList(initialCapacities, maximumSizes, expireAfterWrites,
+				expireAfterAccesses, refreshes, keyStrengths, valueStrengths));
+		List<List<Object>> combinations = _cartesianProduct(0, sets);
 
-  private static final Function<Object, Optional<?>> NULLABLE_TO_OPTIONAL =
-      new Function<Object, Optional<?>>() {
-        @Override
-        public Optional<?> apply(@NullableDecl Object obj) {
-          return Optional.fromNullable(obj);
-        }
-      };
+		List<CacheBuilder<Object, Object>> caches = new ArrayList<>();
+		for (final List<Object> combination : combinations) {
+			caches.add(createCacheBuilder((Integer) combination.get(0), (Integer) combination.get(1),
+					(Integer) combination.get(2), (DurationSpec) combination.get(3), (DurationSpec) combination.get(4),
+					(DurationSpec) combination.get(5), (Strength) combination.get(6), (Strength) combination.get(7)));
+		}
+		return caches;
+	}
 
-  private static final Function<Optional<?>, Object> OPTIONAL_TO_NULLABLE =
-      new Function<Optional<?>, Object>() {
-        @Override
-        public Object apply(Optional<?> optional) {
-          return optional.orNull();
-        }
-      };
+	private static final Function<Object, Optional<?>> NULLABLE_TO_OPTIONAL = new Function<Object, Optional<?>>() {
+		@Override
+		public Optional<?> apply(@NullableDecl Object obj) {
+			return Optional.of(obj);
+		}
+	};
 
-  /**
-   * Sets.cartesianProduct doesn't allow sets that contain null, but we want null to mean "don't
-   * call the associated CacheBuilder method" - that is, get the default CacheBuilder behavior. This
-   * method wraps the elements in the input sets (which may contain null) as Optionals, calls
-   * Sets.cartesianProduct with those, then transforms the result to unwrap the Optionals.
-   */
-  private Iterable<List<Object>> buildCartesianProduct(Set<?>... sets) {
-    List<Set<Optional<?>>> optionalSets = Lists.newArrayListWithExpectedSize(sets.length);
-    for (Set<?> set : sets) {
-      Set<Optional<?>> optionalSet =
-          Sets.newLinkedHashSet(Iterables.transform(set, NULLABLE_TO_OPTIONAL));
-      optionalSets.add(optionalSet);
-    }
-    Set<List<Optional<?>>> cartesianProduct = Sets.cartesianProduct(optionalSets);
-    return Iterables.transform(
-        cartesianProduct,
-        new Function<List<Optional<?>>, List<Object>>() {
-          @Override
-          public List<Object> apply(List<Optional<?>> objs) {
-            return Lists.transform(objs, OPTIONAL_TO_NULLABLE);
-          }
-        });
-  }
+	private static final Function<Optional<?>, Object> OPTIONAL_TO_NULLABLE = new Function<Optional<?>, Object>() {
+		@Override
+		public Object apply(Optional<?> optional) {
+			return optional.orElse(null);
+		}
+	};
 
-  private CacheBuilder<Object, Object> createCacheBuilder(
-      Integer concurrencyLevel,
-      Integer initialCapacity,
-      Integer maximumSize,
-      DurationSpec expireAfterWrite,
-      DurationSpec expireAfterAccess,
-      DurationSpec refresh,
-      Strength keyStrength,
-      Strength valueStrength) {
+	private CacheBuilder<Object, Object> createCacheBuilder(Integer concurrencyLevel, Integer initialCapacity,
+			Integer maximumSize, DurationSpec expireAfterWrite, DurationSpec expireAfterAccess, DurationSpec refresh,
+			Strength keyStrength, Strength valueStrength) {
 
-    CacheBuilder<Object, Object> builder = CacheBuilder.newBuilder();
-    if (concurrencyLevel != null) {
-      builder.concurrencyLevel(concurrencyLevel);
-    }
-    if (initialCapacity != null) {
-      builder.initialCapacity(initialCapacity);
-    }
-    if (maximumSize != null) {
-      builder.maximumSize(maximumSize);
-    }
-    if (expireAfterWrite != null) {
-      builder.expireAfterWrite(expireAfterWrite.duration, expireAfterWrite.unit);
-    }
-    if (expireAfterAccess != null) {
-      builder.expireAfterAccess(expireAfterAccess.duration, expireAfterAccess.unit);
-    }
-    if (refresh != null) {
-      builder.refreshAfterWrite(refresh.duration, refresh.unit);
-    }
-    if (keyStrength != null) {
-      builder.setKeyStrength(keyStrength);
-    }
-    if (valueStrength != null) {
-      builder.setValueStrength(valueStrength);
-    }
-    return builder;
-  }
+		CacheBuilder<Object, Object> builder = CacheBuilder.newBuilder();
+		if (concurrencyLevel != null) {
+			builder.concurrencyLevel(concurrencyLevel);
+		}
+		if (initialCapacity != null) {
+			builder.initialCapacity(initialCapacity);
+		}
+		if (maximumSize != null) {
+			builder.maximumSize(maximumSize);
+		}
+		if (expireAfterWrite != null) {
+			builder.expireAfterWrite(expireAfterWrite.duration, expireAfterWrite.unit);
+		}
+		if (expireAfterAccess != null) {
+			builder.expireAfterAccess(expireAfterAccess.duration, expireAfterAccess.unit);
+		}
+		if (refresh != null) {
+			builder.refreshAfterWrite(refresh.duration, refresh.unit);
+		}
+		if (keyStrength != null) {
+			builder.setKeyStrength(keyStrength);
+		}
+		if (valueStrength != null) {
+			builder.setValueStrength(valueStrength);
+		}
+		return builder;
+	}
 
-  static class DurationSpec {
-    private final long duration;
-    private final TimeUnit unit;
+	static class DurationSpec {
+		private final long duration;
+		private final TimeUnit unit;
 
-    private DurationSpec(long duration, TimeUnit unit) {
-      this.duration = duration;
-      this.unit = unit;
-    }
+		private DurationSpec(long duration, TimeUnit unit) {
+			this.duration = duration;
+			this.unit = unit;
+		}
 
-    public static DurationSpec of(long duration, TimeUnit unit) {
-      return new DurationSpec(duration, unit);
-    }
+		public static DurationSpec of(long duration, TimeUnit unit) {
+			return new DurationSpec(duration, unit);
+		}
 
-    @Override
-    public int hashCode() {
-      return Objects.hashCode(duration, unit);
-    }
+		@Override
+		public int hashCode() {
+			return Objects.hashCode(duration, unit);
+		}
 
-    @Override
-    public boolean equals(Object o) {
-      if (o instanceof DurationSpec) {
-        DurationSpec that = (DurationSpec) o;
-        return unit.toNanos(duration) == that.unit.toNanos(that.duration);
-      }
-      return false;
-    }
+		@Override
+		public boolean equals(Object o) {
+			if (o instanceof DurationSpec) {
+				DurationSpec that = (DurationSpec) o;
+				return unit.toNanos(duration) == that.unit.toNanos(that.duration);
+			}
+			return false;
+		}
 
-    @Override
-    public String toString() {
-      return MoreObjects.toStringHelper(this)
-          .add("duration", duration)
-          .add("unit", unit)
-          .toString();
-    }
-  }
+		@Override
+		public String toString() {
+			return MoreObjects.toStringHelper(this).add("duration", duration).add("unit", unit).toString();
+		}
+	}
+
+	public static List<List<Object>> cartesianProduct(Set<?>... sets) {
+		if (sets.length < 2)
+			throw new IllegalArgumentException("Can't have a product of fewer than two sets (got " + sets.length + ")");
+
+		return _cartesianProduct(0, sets);
+	}
+
+	private static List<List<Object>> _cartesianProduct(int index, Set<?>... sets) {
+		List<List<Object>> ret = new ArrayList<>();
+		if (index == sets.length) {
+			ret.add(new ArrayList<Object>());
+		} else {
+			for (Object obj : sets[index]) {
+				for (List<Object> set : _cartesianProduct(index + 1, sets)) {
+					set.add(obj);
+					ret.add(set);
+				}
+			}
+		}
+		return ret;
+	}
 }

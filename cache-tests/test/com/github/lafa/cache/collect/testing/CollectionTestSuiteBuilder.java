@@ -17,8 +17,7 @@
 package com.github.lafa.cache.collect.testing;
 
 import com.github.lafa.cache.collect.testing.features.Feature;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.testing.SerializableTester;
+import com.github.lafa.cache.common.testing.SerializableTester;
 
 import static com.github.lafa.cache.collect.testing.features.CollectionFeature.SERIALIZABLE;
 import static com.github.lafa.cache.collect.testing.features.CollectionFeature.SERIALIZABLE_INCLUDING_VIEWS;
@@ -38,7 +37,7 @@ import junit.framework.TestSuite;
  * @author Chris Povirk
  * @author Louis Wasserman
  */
-@GwtIncompatible
+
 public class CollectionTestSuiteBuilder<E>
     extends AbstractCollectionTestSuiteBuilder<CollectionTestSuiteBuilder<E>, E> {
   public static <E> CollectionTestSuiteBuilder<E> using(TestCollectionGenerator<E> generator) {

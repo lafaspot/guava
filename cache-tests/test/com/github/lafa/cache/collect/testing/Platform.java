@@ -1,3 +1,4 @@
+package com.github.lafa.cache.collect.testing;
 /*
  * Copyright (C) 2008 The Guava Authors
  *
@@ -14,8 +15,6 @@
  * limitations under the License.
  */
 
-package com.github.lafa.cache.collect.testing;
-
 import java.util.Locale;
 
 /**
@@ -26,7 +25,7 @@ import java.util.Locale;
  *
  * @author Hayward Chan
  */
-final public class Platform {
+final class Platform {
 	static <T> T[] clone(T[] array) {
 		return array.clone();
 	}

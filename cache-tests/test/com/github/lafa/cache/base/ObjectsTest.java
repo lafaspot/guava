@@ -16,7 +16,7 @@
 
 package com.github.lafa.cache.base;
 
-import com.google.common.testing.NullPointerTester;
+import com.github.lafa.cache.common.testing.NullPointerTester;
 
 import junit.framework.TestCase;
 

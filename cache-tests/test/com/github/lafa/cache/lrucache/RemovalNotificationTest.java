@@ -16,9 +16,8 @@
 
 package com.github.lafa.cache.lrucache;
 
-import com.google.common.cache.RemovalCause;
-import com.google.common.cache.RemovalNotification;
-import com.google.common.testing.EqualsTester;
+import com.github.lafa.cache.common.testing.EqualsTester;
+
 import junit.framework.TestCase;
 
 /**
@@ -28,13 +27,11 @@ import junit.framework.TestCase;
  */
 public class RemovalNotificationTest extends TestCase {
 
-  public void testEquals() {
-    new EqualsTester()
-        .addEqualityGroup(
-            RemovalNotification.create("one", 1, RemovalCause.EXPLICIT),
-            RemovalNotification.create("one", 1, RemovalCause.REPLACED))
-        .addEqualityGroup(RemovalNotification.create("1", 1, RemovalCause.EXPLICIT))
-        .addEqualityGroup(RemovalNotification.create("one", 2, RemovalCause.EXPLICIT))
-        .testEquals();
-  }
+	public void testEquals() {
+		new EqualsTester()
+				.addEqualityGroup(RemovalNotification.create("one", 1, RemovalCause.EXPLICIT),
+						RemovalNotification.create("one", 1, RemovalCause.REPLACED))
+				.addEqualityGroup(RemovalNotification.create("1", 1, RemovalCause.EXPLICIT))
+				.addEqualityGroup(RemovalNotification.create("one", 2, RemovalCause.EXPLICIT)).testEquals();
+	}
 }

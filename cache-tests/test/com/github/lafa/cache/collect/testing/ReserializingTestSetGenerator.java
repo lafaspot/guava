@@ -16,7 +16,7 @@
 
 package com.github.lafa.cache.collect.testing;
 
-import com.google.common.annotations.GwtIncompatible;
+
 import java.util.Set;
 
 /**
@@ -26,7 +26,7 @@ import java.util.Set;
  *
  * @author Jesse Wilson
  */
-@GwtIncompatible
+
 public class ReserializingTestSetGenerator<E> extends ReserializingTestCollectionGenerator<E>
     implements TestSetGenerator<E> {
 

@@ -48,7 +48,6 @@
  *   <li>{@link com.google.common.base.Defaults}
  *   <li>{@link com.google.common.base.Enums}
  *   <li>{@link com.github.lafa.cache.base.Objects}
- *   <li>{@link com.google.common.base.Optional}
  *   <li>{@link com.github.lafa.cache.base.Preconditions}
  *   <li>{@link com.github.lafa.cache.base.Stopwatch}
  *   <li>{@link com.github.lafa.cache.base.Throwables}

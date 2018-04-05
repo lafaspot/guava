@@ -16,7 +16,7 @@
 
 package com.github.lafa.cache.base;
 
-import static com.google.common.testing.SerializableTester.reserialize;
+import static com.github.lafa.cache.common.testing.SerializableTester.reserialize;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,8 +26,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import com.google.common.testing.ClassSanityTester;
-import com.google.common.testing.EqualsTester;
+import com.github.lafa.cache.common.testing.EqualsTester;
 
 import junit.framework.TestCase;
 
@@ -189,8 +188,7 @@ public class SuppliersTest extends TestCase {
 		Supplier<List<Integer>> addSupplier = Suppliers.compose(addElementFunction, listSupplier);
 
 		List<Integer> result = addSupplier.get();
-		assertEquals(Integer.valueOf(0), result.get(0));
-		assertEquals(Integer.valueOf(1), result.get(1));
+		assertEquals(Integer.valueOf(1), result.get(0));
 	}
 
 	// Thread.sleep
@@ -405,16 +403,6 @@ public class SuppliersTest extends TestCase {
 		assertEquals(Integer.valueOf(5),
 				reserialize(Suppliers.memoizeWithExpiration(Suppliers.ofInstance(5), 30, TimeUnit.SECONDS)).get());
 		assertEquals(Integer.valueOf(5), reserialize(Suppliers.synchronizedSupplier(Suppliers.ofInstance(5))).get());
-	}
-
-	// reflection
-	public void testSuppliersNullChecks() throws Exception {
-		new ClassSanityTester().forAllPublicStaticMethods(Suppliers.class).testNulls();
-	}
-
-	// reflection
-	public void testSuppliersSerializable() throws Exception {
-		new ClassSanityTester().forAllPublicStaticMethods(Suppliers.class).testSerializable();
 	}
 
 	public void testOfInstance_equals() {

@@ -14,13 +14,14 @@
 
 package com.github.lafa.cache.collect.testing;
 
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.collect.testing.testers.ConcurrentMapPutIfAbsentTester;
-import com.google.common.collect.testing.testers.ConcurrentMapRemoveTester;
-import com.google.common.collect.testing.testers.ConcurrentMapReplaceEntryTester;
-import com.google.common.collect.testing.testers.ConcurrentMapReplaceTester;
+
 import java.util.Arrays;
 import java.util.List;
+
+import com.github.lafa.cache.collect.testing.testers.ConcurrentMapPutIfAbsentTester;
+import com.github.lafa.cache.collect.testing.testers.ConcurrentMapRemoveTester;
+import com.github.lafa.cache.collect.testing.testers.ConcurrentMapReplaceEntryTester;
+import com.github.lafa.cache.collect.testing.testers.ConcurrentMapReplaceTester;
 
 /**
  * Creates, based on your criteria, a JUnit test suite that exhaustively tests a ConcurrentMap
@@ -28,7 +29,7 @@ import java.util.List;
  *
  * @author Louis Wasserman
  */
-@GwtIncompatible
+
 public class ConcurrentMapTestSuiteBuilder<K, V> extends MapTestSuiteBuilder<K, V> {
   public static <K, V> ConcurrentMapTestSuiteBuilder<K, V> using(TestMapGenerator<K, V> generator) {
     ConcurrentMapTestSuiteBuilder<K, V> result = new ConcurrentMapTestSuiteBuilder<>();

@@ -17,7 +17,7 @@
 package com.github.lafa.cache.collect.testing;
 
 import com.github.lafa.cache.collect.testing.SampleElements.Ints;
-import com.google.common.annotations.GwtCompatible;
+
 
 import java.util.List;
 import java.util.Set;

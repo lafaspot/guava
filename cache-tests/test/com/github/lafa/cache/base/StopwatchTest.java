@@ -22,7 +22,7 @@ import static java.util.concurrent.TimeUnit.NANOSECONDS;
 
 import java.time.Duration;
 
-import com.google.common.testing.FakeTicker;
+import com.github.lafa.cache.common.testing.FakeTicker;
 
 import junit.framework.TestCase;
 
@@ -48,16 +48,19 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testInitialState() {
+		stopwatch.stop();
 		assertFalse(stopwatch.isRunning());
 		assertEquals(0, stopwatch.elapsed(NANOSECONDS));
 	}
 
 	public void testStart() {
+		stopwatch.stop();
 		assertSame(stopwatch, stopwatch.start());
 		assertTrue(stopwatch.isRunning());
 	}
 
 	public void testStart_whileRunning() {
+		stopwatch.stop();
 		stopwatch.start();
 		try {
 			stopwatch.start();
@@ -68,12 +71,14 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testStop() {
+		stopwatch.stop();
 		stopwatch.start();
 		assertSame(stopwatch, stopwatch.stop());
 		assertFalse(stopwatch.isRunning());
 	}
 
 	public void testStop_new() {
+		stopwatch.stop();
 		try {
 			stopwatch.stop();
 			fail();
@@ -83,6 +88,7 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testStop_alreadyStopped() {
+		stopwatch.stop();
 		stopwatch.start();
 		stopwatch.stop();
 		try {
@@ -105,6 +111,7 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testReset_whileRunning() {
+		stopwatch.stop();
 		ticker.advance(1);
 		stopwatch.start();
 		assertEquals(0, stopwatch.elapsed(NANOSECONDS));
@@ -117,6 +124,7 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testElapsed_whileRunning() {
+		stopwatch.stop();
 		ticker.advance(78);
 		stopwatch.start();
 		assertEquals(0, stopwatch.elapsed(NANOSECONDS));
@@ -126,6 +134,7 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testElapsed_notRunning() {
+		stopwatch.stop();
 		ticker.advance(1);
 		stopwatch.start();
 		ticker.advance(4);
@@ -135,6 +144,7 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testElapsed_multipleSegments() {
+		stopwatch.stop();
 		stopwatch.start();
 		ticker.advance(9);
 		stopwatch.stop();
@@ -152,6 +162,7 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testElapsed_micros() {
+		stopwatch.stop();
 		stopwatch.start();
 		ticker.advance(999);
 		assertEquals(0, stopwatch.elapsed(MICROSECONDS));
@@ -160,6 +171,7 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testElapsed_millis() {
+		stopwatch.stop();
 		stopwatch.start();
 		ticker.advance(999999);
 		assertEquals(0, stopwatch.elapsed(MILLISECONDS));
@@ -168,6 +180,7 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testElapsed_duration() {
+		stopwatch.stop();
 		stopwatch.start();
 		ticker.advance(999999);
 		assertEquals(Duration.ofNanos(999999), stopwatch.elapsed());
@@ -176,6 +189,7 @@ public class StopwatchTest extends TestCase {
 	}
 
 	public void testToString() {
+		stopwatch.stop();
 		stopwatch.start();
 		assertEquals("0.000 ns", stopwatch.toString());
 		ticker.advance(1);
