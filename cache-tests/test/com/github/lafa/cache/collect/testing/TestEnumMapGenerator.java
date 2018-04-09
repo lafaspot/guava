@@ -16,7 +16,7 @@
 
 package com.github.lafa.cache.collect.testing;
 
-import com.google.common.annotations.GwtCompatible;
+
 
 import static com.github.lafa.cache.collect.testing.Helpers.orderEntriesByKey;
 

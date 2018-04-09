@@ -19,8 +19,7 @@ package com.github.lafa.cache.collect.testing;
 import com.github.lafa.cache.collect.testing.DerivedCollectionGenerators.Bound;
 import com.github.lafa.cache.collect.testing.DerivedCollectionGenerators.SortedSetSubsetTestSetGenerator;
 import com.github.lafa.cache.collect.testing.features.Feature;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.collect.testing.testers.NavigableSetNavigationTester;
+import com.github.lafa.cache.collect.testing.testers.NavigableSetNavigationTester;
 
 import static com.github.lafa.cache.collect.testing.features.CollectionFeature.DESCENDING_VIEW;
 import static com.github.lafa.cache.collect.testing.features.CollectionFeature.SUBSET_VIEW;
@@ -38,7 +37,7 @@ import junit.framework.TestSuite;
  * Creates, based on your criteria, a JUnit test suite that exhaustively tests a NavigableSet
  * implementation.
  */
-@GwtIncompatible
+
 public final class NavigableSetTestSuiteBuilder<E> extends SortedSetTestSuiteBuilder<E> {
   public static <E> NavigableSetTestSuiteBuilder<E> using(TestSortedSetGenerator<E> generator) {
     NavigableSetTestSuiteBuilder<E> builder = new NavigableSetTestSuiteBuilder<E>();

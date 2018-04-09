@@ -91,7 +91,7 @@ public abstract class AbstractContainerTester<C, E>
    * Asserts that the collection under test contains exactly the given elements, respecting
    * cardinality but not order. Subclasses may override this method to provide stronger assertions,
    * e.g., to check ordering in lists, but realize that <strong>unless a test extends {@link
-   * com.google.common.collect.testing.testers.AbstractListTester AbstractListTester}, a call to
+   * com.github.lafa.cache.collect.testing.testers.AbstractListTester AbstractListTester}, a call to
    * {@code expectContents()} invokes this version</strong>.
    *
    * @param expected expected value of {@link #container}

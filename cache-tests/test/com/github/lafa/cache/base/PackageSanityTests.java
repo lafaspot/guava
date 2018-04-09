@@ -16,7 +16,7 @@
 
 package com.github.lafa.cache.base;
 
-import com.google.common.testing.AbstractPackageSanityTests;
+import com.github.lafa.cache.common.testing.AbstractPackageSanityTests;
 
 /** Basic sanity tests for classes in {@code common.base}. */
 

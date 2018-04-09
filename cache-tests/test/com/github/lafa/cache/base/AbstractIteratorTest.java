@@ -17,7 +17,8 @@
 package com.github.lafa.cache.base;
 
 import com.github.lafa.cache.base.AbstractIterator;
-import com.google.common.testing.GcFinalization;
+import com.github.lafa.cache.common.testing.GcFinalization;
+
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.NoSuchElementException;

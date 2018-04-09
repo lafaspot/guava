@@ -16,7 +16,7 @@
 
 package com.github.lafa.cache.collect.testing;
 
-import com.google.common.annotations.GwtCompatible;
+
 
 /**
  * An unhashable object to be used in testing as values in our collections.

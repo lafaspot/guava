@@ -20,26 +20,23 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import com.google.common.collect.testing.testers.CollectionAddAllTester;
-import com.google.common.collect.testing.testers.CollectionAddTester;
-import com.google.common.collect.testing.testers.CollectionClearTester;
-import com.google.common.collect.testing.testers.CollectionContainsAllTester;
-import com.google.common.collect.testing.testers.CollectionContainsTester;
-import com.google.common.collect.testing.testers.CollectionCreationTester;
-import com.google.common.collect.testing.testers.CollectionEqualsTester;
-import com.google.common.collect.testing.testers.CollectionForEachTester;
-import com.google.common.collect.testing.testers.CollectionIsEmptyTester;
-import com.google.common.collect.testing.testers.CollectionIteratorTester;
-import com.google.common.collect.testing.testers.CollectionRemoveAllTester;
-import com.google.common.collect.testing.testers.CollectionRemoveIfTester;
-import com.google.common.collect.testing.testers.CollectionRemoveTester;
-import com.google.common.collect.testing.testers.CollectionRetainAllTester;
-import com.google.common.collect.testing.testers.CollectionSerializationTester;
-import com.google.common.collect.testing.testers.CollectionSizeTester;
-import com.google.common.collect.testing.testers.CollectionSpliteratorTester;
-import com.google.common.collect.testing.testers.CollectionStreamTester;
-import com.google.common.collect.testing.testers.CollectionToArrayTester;
-import com.google.common.collect.testing.testers.CollectionToStringTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionClearTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionContainsAllTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionContainsTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionCreationTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionEqualsTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionForEachTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionIsEmptyTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionIteratorTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionRemoveAllTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionRemoveIfTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionRemoveTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionRetainAllTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionSerializationTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionSizeTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionSpliteratorTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionStreamTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionToStringTester;
 
 /**
  * Abstract superclass of all test-suite builders for collection interfaces.
@@ -50,12 +47,9 @@ public abstract class AbstractCollectionTestSuiteBuilder<
         B extends AbstractCollectionTestSuiteBuilder<B, E>, E>
     extends PerCollectionSizeTestSuiteBuilder<B, TestCollectionGenerator<E>, Collection<E>, E> {
   // Class parameters must be raw.
-  @SuppressWarnings("unchecked")
   @Override
   protected List<Class<? extends AbstractTester>> getTesters() {
     return Arrays.<Class<? extends AbstractTester>>asList(
-        CollectionAddAllTester.class,
-        CollectionAddTester.class,
         CollectionClearTester.class,
         CollectionContainsAllTester.class,
         CollectionContainsTester.class,
@@ -72,7 +66,6 @@ public abstract class AbstractCollectionTestSuiteBuilder<
         CollectionSizeTester.class,
         CollectionSpliteratorTester.class,
         CollectionStreamTester.class,
-        CollectionToArrayTester.class,
         CollectionToStringTester.class);
   }
 }

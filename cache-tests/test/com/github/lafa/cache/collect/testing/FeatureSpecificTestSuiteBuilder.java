@@ -23,7 +23,7 @@ import com.github.lafa.cache.collect.testing.features.ConflictingRequirementsExc
 import com.github.lafa.cache.collect.testing.features.Feature;
 import com.github.lafa.cache.collect.testing.features.FeatureUtil;
 import com.github.lafa.cache.collect.testing.features.TesterRequirements;
-import com.google.common.annotations.GwtIncompatible;
+
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ import junit.framework.TestSuite;
  *     information required to parameterize the test.
  * @author George van den Driessche
  */
-@GwtIncompatible
+
 public abstract class FeatureSpecificTestSuiteBuilder<
     B extends FeatureSpecificTestSuiteBuilder<B, G>, G> {
   @SuppressWarnings("unchecked")

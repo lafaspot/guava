@@ -17,15 +17,14 @@
 package com.github.lafa.cache.collect.testing;
 
 import com.github.lafa.cache.collect.testing.features.Feature;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.collect.testing.testers.CollectionSerializationEqualTester;
-import com.google.common.collect.testing.testers.SetAddAllTester;
-import com.google.common.collect.testing.testers.SetAddTester;
-import com.google.common.collect.testing.testers.SetCreationTester;
-import com.google.common.collect.testing.testers.SetEqualsTester;
-import com.google.common.collect.testing.testers.SetHashCodeTester;
-import com.google.common.collect.testing.testers.SetRemoveTester;
-import com.google.common.testing.SerializableTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionSerializationEqualTester;
+import com.github.lafa.cache.collect.testing.testers.SetAddAllTester;
+import com.github.lafa.cache.collect.testing.testers.SetAddTester;
+import com.github.lafa.cache.collect.testing.testers.SetCreationTester;
+import com.github.lafa.cache.collect.testing.testers.SetEqualsTester;
+import com.github.lafa.cache.collect.testing.testers.SetHashCodeTester;
+import com.github.lafa.cache.collect.testing.testers.SetRemoveTester;
+import com.github.lafa.cache.common.testing.SerializableTester;
 
 import static com.github.lafa.cache.collect.testing.features.CollectionFeature.SERIALIZABLE;
 import static com.github.lafa.cache.collect.testing.features.CollectionFeature.SERIALIZABLE_INCLUDING_VIEWS;
@@ -42,7 +41,7 @@ import junit.framework.TestSuite;
  *
  * @author George van den Driessche
  */
-@GwtIncompatible
+
 public class SetTestSuiteBuilder<E>
     extends AbstractCollectionTestSuiteBuilder<SetTestSuiteBuilder<E>, E> {
   public static <E> SetTestSuiteBuilder<E> using(TestSetGenerator<E> generator) {

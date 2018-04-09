@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.google.common.annotations.GwtIncompatible;
+
 
 import junit.framework.Assert;
 import junit.framework.AssertionFailedError;
@@ -515,7 +515,7 @@ public class Helpers {
     }
   }
 
-  @GwtIncompatible // reflection
+   // reflection
   public static Method getMethod(Class<?> clazz, String name) {
     try {
       return clazz.getMethod(name);

@@ -18,7 +18,7 @@ package com.github.lafa.cache.collect.testing;
 
 import com.github.lafa.cache.collect.testing.features.CollectionFeature;
 import com.github.lafa.cache.collect.testing.features.CollectionSize;
-import com.google.common.annotations.GwtIncompatible;
+
 
 import java.lang.reflect.Method;
 import java.util.ArrayDeque;
@@ -42,7 +42,7 @@ import junit.framework.TestSuite;
  *
  * @author Jared Levy
  */
-@GwtIncompatible
+
 public class TestsForQueuesInJavaUtil {
   public static Test suite() {
     return new TestsForQueuesInJavaUtil().allTests();

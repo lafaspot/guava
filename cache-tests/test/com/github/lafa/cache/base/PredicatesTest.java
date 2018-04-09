@@ -2,7 +2,6 @@ package com.github.lafa.cache.base;
 
 
 import static com.github.lafa.cache.base.CharMatcher.whitespace;
-import static com.google.common.truth.Truth.assertThat;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,10 +13,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import com.google.common.testing.ClassSanityTester;
-import com.google.common.testing.EqualsTester;
-import com.google.common.testing.NullPointerTester;
-import com.google.common.testing.SerializableTester;
+import com.github.lafa.cache.common.testing.EqualsTester;
+import com.github.lafa.cache.common.testing.NullPointerTester;
+import com.github.lafa.cache.common.testing.SerializableTester;
 
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
@@ -667,12 +665,6 @@ public class PredicatesTest extends TestCase {
 		// Predicate<Integer> p4 = Predicates.<Integer>in(nums);
 	}
 
-	// NullPointerTester
-	public void testNullPointerExceptions() {
-		NullPointerTester tester = new NullPointerTester();
-		tester.testAllPublicStaticMethods(Predicates.class);
-	}
-
 	@SuppressWarnings("unchecked") // varargs
 	// SerializbleTester
 	public void testCascadingSerialization() throws Exception {
@@ -791,17 +783,6 @@ public class PredicatesTest extends TestCase {
 		// While not a contractual requirement, we'd like the hash codes for ands
 		// & ors of the same predicates to not collide.
 		assertTrue(Predicates.and(p1, p2).hashCode() != Predicates.or(p1, p2).hashCode());
-	}
-
-	// reflection
-	public void testNulls() throws Exception {
-		new ClassSanityTester().forAllPublicStaticMethods(Predicates.class).testNulls();
-	}
-
-	// reflection
-	@AndroidIncompatible // TODO(cpovirk): ClassNotFoundException: com.github.lafa.cache.base.Function
-	public void testEqualsAndSerializable() throws Exception {
-		new ClassSanityTester().forAllPublicStaticMethods(Predicates.class).testEqualsAndSerializable();
 	}
 
 	private static void assertEvalsToTrue(Predicate<? super Integer> predicate) {

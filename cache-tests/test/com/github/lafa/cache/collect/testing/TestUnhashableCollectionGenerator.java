@@ -17,7 +17,7 @@
 package com.github.lafa.cache.collect.testing;
 
 import com.github.lafa.cache.collect.testing.SampleElements.Unhashables;
-import com.google.common.annotations.GwtCompatible;
+
 
 import java.util.Collection;
 import java.util.List;

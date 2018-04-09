@@ -18,28 +18,27 @@ package com.github.lafa.cache.collect.testing;
 
 import com.github.lafa.cache.collect.testing.features.CollectionFeature;
 import com.github.lafa.cache.collect.testing.features.Feature;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.collect.testing.testers.CollectionSerializationEqualTester;
-import com.google.common.collect.testing.testers.ListAddAllAtIndexTester;
-import com.google.common.collect.testing.testers.ListAddAllTester;
-import com.google.common.collect.testing.testers.ListAddAtIndexTester;
-import com.google.common.collect.testing.testers.ListAddTester;
-import com.google.common.collect.testing.testers.ListCreationTester;
-import com.google.common.collect.testing.testers.ListEqualsTester;
-import com.google.common.collect.testing.testers.ListGetTester;
-import com.google.common.collect.testing.testers.ListHashCodeTester;
-import com.google.common.collect.testing.testers.ListIndexOfTester;
-import com.google.common.collect.testing.testers.ListLastIndexOfTester;
-import com.google.common.collect.testing.testers.ListListIteratorTester;
-import com.google.common.collect.testing.testers.ListRemoveAllTester;
-import com.google.common.collect.testing.testers.ListRemoveAtIndexTester;
-import com.google.common.collect.testing.testers.ListRemoveTester;
-import com.google.common.collect.testing.testers.ListReplaceAllTester;
-import com.google.common.collect.testing.testers.ListRetainAllTester;
-import com.google.common.collect.testing.testers.ListSetTester;
-import com.google.common.collect.testing.testers.ListSubListTester;
-import com.google.common.collect.testing.testers.ListToArrayTester;
-import com.google.common.testing.SerializableTester;
+import com.github.lafa.cache.collect.testing.testers.CollectionSerializationEqualTester;
+import com.github.lafa.cache.collect.testing.testers.ListAddAllAtIndexTester;
+import com.github.lafa.cache.collect.testing.testers.ListAddAllTester;
+import com.github.lafa.cache.collect.testing.testers.ListAddAtIndexTester;
+import com.github.lafa.cache.collect.testing.testers.ListAddTester;
+import com.github.lafa.cache.collect.testing.testers.ListCreationTester;
+import com.github.lafa.cache.collect.testing.testers.ListEqualsTester;
+import com.github.lafa.cache.collect.testing.testers.ListGetTester;
+import com.github.lafa.cache.collect.testing.testers.ListHashCodeTester;
+import com.github.lafa.cache.collect.testing.testers.ListIndexOfTester;
+import com.github.lafa.cache.collect.testing.testers.ListLastIndexOfTester;
+import com.github.lafa.cache.collect.testing.testers.ListListIteratorTester;
+import com.github.lafa.cache.collect.testing.testers.ListRemoveAllTester;
+import com.github.lafa.cache.collect.testing.testers.ListRemoveAtIndexTester;
+import com.github.lafa.cache.collect.testing.testers.ListRemoveTester;
+import com.github.lafa.cache.collect.testing.testers.ListReplaceAllTester;
+import com.github.lafa.cache.collect.testing.testers.ListRetainAllTester;
+import com.github.lafa.cache.collect.testing.testers.ListSetTester;
+import com.github.lafa.cache.collect.testing.testers.ListSubListTester;
+import com.github.lafa.cache.collect.testing.testers.ListToArrayTester;
+import com.github.lafa.cache.common.testing.SerializableTester;
 
 import static com.github.lafa.cache.collect.testing.features.CollectionFeature.KNOWN_ORDER;
 import static com.github.lafa.cache.collect.testing.features.CollectionFeature.SERIALIZABLE;
@@ -58,7 +57,7 @@ import junit.framework.TestSuite;
  *
  * @author George van den Driessche
  */
-@GwtIncompatible
+
 public final class ListTestSuiteBuilder<E>
     extends AbstractCollectionTestSuiteBuilder<ListTestSuiteBuilder<E>, E> {
   public static <E> ListTestSuiteBuilder<E> using(TestListGenerator<E> generator) {

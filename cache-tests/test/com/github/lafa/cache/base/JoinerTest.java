@@ -27,9 +27,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.google.common.base.Joiner;
-import com.google.common.base.Joiner.MapJoiner;
-import com.google.common.testing.NullPointerTester;
+import com.github.lafa.cache.base.Joiner.MapJoiner;
+import com.github.lafa.cache.common.testing.NullPointerTester;
 
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
@@ -237,9 +236,12 @@ public class JoinerTest extends TestCase {
 
 	public void testMap() {
 		MapJoiner j = Joiner.on(';').withKeyValueSeparator(":");
-		assertEquals("", j.join(new HashMap<>()));
-		Map<String, String> m2 = new HashMap<>();
-		assertEquals(":", j.join(m2));
+		Map<String, String> map1 = new HashMap<>();
+		Map<String, String> map2 = new HashMap<>();
+		map2.put("", "");
+
+		assertEquals("", j.join(map1));
+		assertEquals(":", j.join(map2));
 
 		Map<String, String> mapWithNulls = new LinkedHashMap<>();
 		mapWithNulls.put("a", null);
@@ -331,15 +333,5 @@ public class JoinerTest extends TestCase {
 		assertEquals("foo,foo", Joiner.on(",").join(new DontStringMeBro(), new DontStringMeBro()));
 		assertEquals("foo,bar,foo",
 				Joiner.on(",").useForNull("bar").join(new DontStringMeBro(), null, new DontStringMeBro()));
-	}
-
-	// NullPointerTester
-	public void testNullPointers() {
-		NullPointerTester tester = new NullPointerTester();
-		tester.testAllPublicStaticMethods(Joiner.class);
-		tester.testInstanceMethods(Joiner.on(","), NullPointerTester.Visibility.PACKAGE);
-		tester.testInstanceMethods(Joiner.on(",").skipNulls(), NullPointerTester.Visibility.PACKAGE);
-		tester.testInstanceMethods(Joiner.on(",").useForNull("x"), NullPointerTester.Visibility.PACKAGE);
-		tester.testInstanceMethods(Joiner.on(",").withKeyValueSeparator("="), NullPointerTester.Visibility.PACKAGE);
 	}
 }

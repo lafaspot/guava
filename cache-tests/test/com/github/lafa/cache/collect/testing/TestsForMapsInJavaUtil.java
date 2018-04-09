@@ -21,8 +21,8 @@ import static java.util.Arrays.asList;
 import com.github.lafa.cache.collect.testing.features.CollectionFeature;
 import com.github.lafa.cache.collect.testing.features.CollectionSize;
 import com.github.lafa.cache.collect.testing.features.MapFeature;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.collect.testing.testers.MapEntrySetTester;
+import com.github.lafa.cache.collect.testing.testers.MapEntrySetTester;
+
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.Collection;
@@ -48,7 +48,7 @@ import junit.framework.TestSuite;
  *
  * @author Kevin Bourrillion
  */
-@GwtIncompatible
+
 public class TestsForMapsInJavaUtil {
 
   public static Test suite() {

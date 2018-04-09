@@ -16,7 +16,7 @@
 
 package com.github.lafa.cache.collect.testing;
 
-import com.google.common.annotations.GwtIncompatible;
+
 import java.util.List;
 
 /**
@@ -25,7 +25,7 @@ import java.util.List;
  *
  * @author Louis Wasserman
  */
-@GwtIncompatible
+
 public class ConcurrentNavigableMapTestSuiteBuilder<K, V>
     extends NavigableMapTestSuiteBuilder<K, V> {
 

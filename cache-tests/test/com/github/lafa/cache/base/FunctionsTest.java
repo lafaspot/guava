@@ -21,10 +21,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.common.testing.ClassSanityTester;
-import com.google.common.testing.EqualsTester;
-import com.google.common.testing.NullPointerTester;
-import com.google.common.testing.SerializableTester;
+import com.github.lafa.cache.common.testing.EqualsTester;
+import com.github.lafa.cache.common.testing.NullPointerTester;
+import com.github.lafa.cache.common.testing.SerializableTester;
 
 import junit.framework.TestCase;
 
@@ -72,12 +71,6 @@ public class FunctionsTest extends TestCase {
 	// SerializableTester
 	public void testToStringFunctionSerializable() {
 		checkCanReserializeSingleton(Functions.toStringFunction());
-	}
-
-	// NullPointerTester
-	public void testNullPointerExceptions() {
-		NullPointerTester tester = new NullPointerTester();
-		tester.testAllPublicStaticMethods(Functions.class);
 	}
 
 	public void testForMapWithoutDefault() {
@@ -384,19 +377,6 @@ public class FunctionsTest extends TestCase {
 	// SerializableTester
 	public void testForSupplierSerializable() {
 		checkCanReserialize(Functions.forSupplier(new CountingSupplier()));
-	}
-
-	// reflection
-	public void testNulls() throws Exception {
-		new ClassSanityTester().forAllPublicStaticMethods(Functions.class).testNulls();
-	}
-
-	// reflection
-	// TODO(cpovirk): ClassNotFoundException: com.github.lafa.cache.base.Function
-	// (I suspect that this and the other similar failures happen with
-	// ArbitraryInstances proxies.)
-	public void testEqualsAndSerializable() throws Exception {
-		new ClassSanityTester().forAllPublicStaticMethods(Functions.class).testEqualsAndSerializable();
 	}
 
 	// SerializableTester

@@ -23,8 +23,8 @@ import com.github.lafa.cache.collect.testing.DerivedCollectionGenerators.Bound;
 import com.github.lafa.cache.collect.testing.DerivedCollectionGenerators.ForwardingTestMapGenerator;
 import com.github.lafa.cache.collect.testing.DerivedCollectionGenerators.SortedMapSubmapTestMapGenerator;
 import com.github.lafa.cache.collect.testing.features.Feature;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.collect.testing.testers.NavigableMapNavigationTester;
+import com.github.lafa.cache.collect.testing.testers.NavigableMapNavigationTester;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +37,7 @@ import junit.framework.TestSuite;
  * Creates, based on your criteria, a JUnit test suite that exhaustively tests a NavigableMap
  * implementation.
  */
-@GwtIncompatible
+
 public class NavigableMapTestSuiteBuilder<K, V> extends SortedMapTestSuiteBuilder<K, V> {
   public static <K, V> NavigableMapTestSuiteBuilder<K, V> using(
       TestSortedMapGenerator<K, V> generator) {

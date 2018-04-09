@@ -18,7 +18,7 @@ import static com.github.lafa.cache.base.Preconditions.checkArgument;
 import static com.github.lafa.cache.base.Preconditions.checkNotNull;
 
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
-import org.mockito.internal.util.Platform;
+import com.github.lafa.cache.base.Platform;
 
 import com.github.lafa.cache.annotations.VisibleForTesting;
 

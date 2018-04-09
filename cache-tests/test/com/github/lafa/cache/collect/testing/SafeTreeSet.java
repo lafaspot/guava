@@ -16,7 +16,7 @@
 
 package com.github.lafa.cache.collect.testing;
 
-import com.google.common.annotations.GwtIncompatible;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Comparator;
@@ -31,7 +31,7 @@ import java.util.TreeSet;
  *
  * @author Louis Wasserman
  */
-@GwtIncompatible
+
 public final class SafeTreeSet<E> implements Serializable, NavigableSet<E> {
   @SuppressWarnings("unchecked")
   private static final Comparator<Object> NATURAL_ORDER =

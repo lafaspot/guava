@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.github.lafa.cache</groupId>
     <artifactId>cache-parent</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>pom</packaging>
     <name>Cache Maven Parent</name>
     <url>https://github.com/lafaspot/ConcurrentHashMap</url>
@@ -52,9 +52,9 @@
 
     <modules>
         <module>cache</module>
+        <module>cache-tests</module>
     </modules>
     <build>
-        <!-- Handle where Guava deviates from Maven defaults -->
         <sourceDirectory>src</sourceDirectory>
         <testSourceDirectory>test</testSourceDirectory>
         <resources>
@@ -294,7 +294,6 @@
                 <scope>test</scope>
                 <exclusions>
                     <exclusion>
-                        <!-- use the guava we're building. -->
                         <groupId>com.google.guava</groupId>
                         <artifactId>guava</artifactId>
                     </exclusion>
@@ -307,7 +306,6 @@
                 <scope>test</scope>
                 <exclusions>
                     <exclusion>
-                        <!-- use the guava we're building. -->
                         <groupId>com.google.guava</groupId>
                         <artifactId>guava</artifactId>
                     </exclusion>

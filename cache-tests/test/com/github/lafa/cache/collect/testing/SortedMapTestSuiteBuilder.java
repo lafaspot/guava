@@ -19,8 +19,7 @@ package com.github.lafa.cache.collect.testing;
 import com.github.lafa.cache.collect.testing.DerivedCollectionGenerators.Bound;
 import com.github.lafa.cache.collect.testing.DerivedCollectionGenerators.SortedMapSubmapTestMapGenerator;
 import com.github.lafa.cache.collect.testing.features.Feature;
-import com.google.common.annotations.GwtIncompatible;
-import com.google.common.collect.testing.testers.SortedMapNavigationTester;
+import com.github.lafa.cache.collect.testing.testers.SortedMapNavigationTester;
 
 import static com.github.lafa.cache.collect.testing.features.CollectionFeature.KNOWN_ORDER;
 
@@ -36,7 +35,7 @@ import junit.framework.TestSuite;
  * Creates, based on your criteria, a JUnit test suite that exhaustively tests a SortedMap
  * implementation.
  */
-@GwtIncompatible
+
 public class SortedMapTestSuiteBuilder<K, V> extends MapTestSuiteBuilder<K, V> {
   public static <K, V> SortedMapTestSuiteBuilder<K, V> using(
       TestSortedMapGenerator<K, V> generator) {

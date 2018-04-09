@@ -16,10 +16,9 @@
 
 package com.github.lafa.cache.lrucache;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LocalCache;
-import com.google.common.testing.AbstractPackageSanityTests;
+import com.github.lafa.cache.common.testing.AbstractPackageSanityTests;
+import com.github.lafa.cache.lrucache.CacheBuilder;
+import com.github.lafa.cache.lrucache.LocalCache;
 
 /**
  * Basic sanity tests for the entire package.
@@ -28,16 +27,8 @@ import com.google.common.testing.AbstractPackageSanityTests;
  */
 
 public class PackageSanityTests extends AbstractPackageSanityTests {
-  public PackageSanityTests() {
-    setDefault(
-        CacheLoader.class,
-        new CacheLoader<Object, Object>() {
-          @Override
-          public Object load(Object key) {
-            return key;
-          }
-        });
-    setDefault(LocalCache.class, new LocalCache<Object, Object>(CacheBuilder.newBuilder(), null));
-    setDefault(CacheBuilder.class, CacheBuilder.newBuilder());
-  }
+	public PackageSanityTests() {
+		setDefault(LocalCache.class, new LocalCache<Object, Object>(CacheBuilder.newBuilder()));
+		setDefault(CacheBuilder.class, CacheBuilder.newBuilder());
+	}
 }
