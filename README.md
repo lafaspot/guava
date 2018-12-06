@@ -20,5 +20,5 @@ To add a dependency on Guava using Maven, use the following:
 
 ## Links
 
-- [GitHub project](https://github.com/lafaspot/cache)
+- [GitHub project](https://github.com/lafaspot/ConcurrentHashMap)
 
